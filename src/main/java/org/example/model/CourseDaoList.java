@@ -11,6 +11,7 @@ import java.util.List;
 public class CourseDaoList implements CourseDao {
     private static List<Course> courses = new ArrayList<>();
     StudentDaoList studentDao = new StudentDaoList();
+
     @Override
     public Course saveCourse(Course course) {
         List<Student> reciveStudentList2 =   studentDao.findAll();
@@ -18,7 +19,9 @@ public class CourseDaoList implements CourseDao {
         System.out.println("Week duration during the course is " +course.getWeekDuration());
         System.out.println("Start Date is "+course.getStartDate());
         System.out.println("Students are "+ reciveStudentList2);
+
         courses.add(course);
+
         return course;
     }
 
@@ -75,5 +78,24 @@ public class CourseDaoList implements CourseDao {
 
         flag=true;
         return flag;
+    }
+
+    public void register(Student student) {
+
+        System.out.println("Registration is in process...........DONE");
+
+        register(student);
+
+      //  courses.add(student);
+
+    }
+    public void unregister(Student student) {
+
+        System.out.println("De-registration is in process.......DONE");
+
+        unregister(student);
+
+       // courses.remove(student);
+
     }
 }

@@ -15,11 +15,9 @@ import java.util.List;
 import java.util.Scanner;
 
 /**
- School Management
- *
+ * School Management
  */
-public class App 
-{
+public class App {
     public static char permitOperationContinue() {
         char s3 = ' ';
         char Op = ScannerCallingClass.scannerCharacter(s3);
@@ -28,43 +26,31 @@ public class App
 
     public static void invokemenu() {
         System.out.println("You have following options (in Vending Machine              ");
-        System.out.println("add()                                          (s) Add (save) Student record ");
-        //   System.out.println("findByEmail                                    (e) Find by Email ");
-        //  System.out.println("findById                                       (i) Find by Id + size etc.");
-        System.out.println("deleteStudent(Student student                  (d) Delete Student");
-        //  System.out.println("View all product desctiption                   (n) Find List by Name");
-        System.out.println("List<Student> findAll                          (a) Find All Students");
+        System.out.println("add()                                               (s) Add (save) Student record ");
+        System.out.println("deleteStudent(Student student                       (d) Delete Student");
+        System.out.println("List<Student> findAll                               (a) Find All Students");
 
+        System.out.println("\n");
+        System.out.println("Course saveCourse(Course course);                   (c) Add (save) Course ");
+        System.out.println("boolean removeCourse(Course course);                (k) Delete Course");
+        System.out.println("List<Course> findAll();                             (m) Find All (courses)");//  System.out.println("View all products                              (f) Full description");
 
+        System.out.println("\n");
+        System.out.println("public void register(Student student)               (r) Register course         ");
+        System.out.println("public void unregister(Student student)             (u) Register course         ");
 
-        System.out.println("add()                                          (c) Add (save) Course ");
-        System.out.println("findByEmail                                    (e) Find (Student) by Email ");
-        System.out.println("findById                                       (i) Find (Student) by Id ");
-        System.out.println("deleteStudent(Student student                  (k) (khtam course) Delete Course");
-        System.out.println("View all product desctiption                   (n) Find List by Name");
-        System.out.println("List<Student> findAll                          (m) (Mazmoon)Find All mazmoon (courses)");//  System.out.println("View all products                              (f) Full description");
-        //  System.out.println("Description                                    (j) Full description");// Same as description of a single object selected by user in VM
+        System.out.println("\n");
+        System.out.println("Advanced search Students");
+        System.out.println("Student findByEmail(String email);                  (e) Find (Student) by Email ");
+        System.out.println("Student findById(int id);                           (i) Find (Student) by Id ");
+        System.out.println("List<Student> findByName(String name)               (n) Find List by Name");
 
-        System.out.println("findByEmail                                    (b) Find (Course) by Date  ");
-        System.out.println("findById                                       (f) Find (Course) by Id ");
-        System.out.println("View all product desctiption                   (g) Find (Course) List by Name");
-
-
-
-
-        System.out.println("Register Course                                (r) Register course         ");
-        System.out.println("Un-Register Course                             (u) Register course         ");
-      /* System.out.println("\n");
         System.out.println("\n");
-        System.out.println("\n");
-        System.out.println("\n");
-        System.out.println("\n");
-        System.out.println("\n");
-        System.out.println("\n");
-        System.out.println("\n");
-        System.out.println("\n");
-        System.out.println("\n");
-    */}
+        System.out.println("Advanced search Courses");
+        System.out.println("List<Course> findByDate(LocalDate date);            (b) Find (Course) by Date  ");
+        System.out.println("Course findById(int id);                            (f) Find (Course) by Id ");
+        System.out.println("List<Course> findByName(String name)                (g) Find (Course) List by Name");
+    }
 
     public static LocalDate dateInput(String userInput) {
 
@@ -83,7 +69,7 @@ public class App
         StudentDaoList StudentDao = new StudentDaoList();
         CourseDaoList CourseDao = new CourseDaoList();
 
-        boolean hogia=false;
+        boolean hogia = false;
         Scanner sc = new Scanner(System.in);
         boolean running = true;
         while (running) {
@@ -110,26 +96,16 @@ public class App
                         Scanner sc3 = new Scanner(System.in);
                         String studentAddress = sc1.nextLine();
 
-                        Student student1 = new Student(studentName, studentEmail,studentAddress);
+                        Student student1 = new Student(studentName, studentEmail, studentAddress);
                         Student addedStudent = StudentDao.saveStudent(student1);
-                      /*
-                        int sizeb = 0;
-                        for (Student s : store) {
-                            System.out.println(s);
-                            sizeb++;
-                        }
-                        System.out.println(sizeb);
-*/
-                    }
+                       }
                     break;
                     //Find by email
                     case 'e': {
                         Scanner sc24 = new Scanner(System.in);
                         System.out.println("Enter the email of the student to search in the list");
                         String studentEmail = sc24.nextLine();
-                       StudentDao.findByEmail(studentEmail);
-                      //  Student student= StudentDao.findByEmail(studentEmail);
-                      //  System.out.println("The email belongs to "+ student);
+                        StudentDao.findByEmail(studentEmail);
 
                     }
                     break;
@@ -138,10 +114,8 @@ public class App
                         Scanner sc24 = new Scanner(System.in);
                         System.out.println("Enter the student Id to search in the list");
                         int studentId = sc24.nextInt();
-                       StudentDao.findById(studentId);
-                        //System.out.println("The Id belongs to "+ student);
-
-                    }
+                        StudentDao.findById(studentId);
+                       }
                     break;
                     //Find Student by email
                     case 'n': {
@@ -150,11 +124,6 @@ public class App
                         System.out.println("Enter the name of the student to search in the list");
                         String studentName = sc24.nextLine();
                         List<Student> sObject = StudentDao.findByName(studentName);
-
-
-
-                      //  List<Student> student=StudentDao.findByEmail(studentName);
-                     //    System.out.println("The email belongs to "+ sObject);
                     }
                     break;
                     //int delete (or remove) a student
@@ -165,19 +134,19 @@ public class App
 
                         List<Student> reciveStudentList = StudentDao.findAll();
 
-                        for(Student s:reciveStudentList) {
-                            if(s.getName().equals(idValue))
+                        for (Student s : reciveStudentList) {
+                            if (s.getName().equals(idValue))
 
                                 hogia = StudentDao.deleteStudent(s);
-                            if(hogia)
+                            if (hogia)
                                 System.out.println("The student is successfully deleted from the student list");
                         }
                         break;
                     //Find by name
 
                     case 'a':
-                        List<Student> reciveStudentList1 =   StudentDao.findAll();
-                        for(Student s:reciveStudentList1)
+                        List<Student> reciveStudentList1 = StudentDao.findAll();
+                        for (Student s : reciveStudentList1)
                             System.out.println(s);
                         break;
                     //Add course
@@ -196,16 +165,13 @@ public class App
 
                         String userInput = sc25.nextLine();
 
-                        LocalDate startDate=dateInput(userInput);
+                        LocalDate startDate = dateInput(userInput);
 
-                   /*     System.out.println("Enter student address");
-                        Scanner sc22 = new Scanner(System.in);
-                        String studentAddress = sc22.nextLine();*/
                         List<Student> students = new ArrayList<>();
-                        Course course1 = new Course(courseName, startDate,courseDuration, students);
+                        Course course1 = new Course(courseName, startDate, courseDuration, students);
 
-                        Course  addedCourse = CourseDao.saveCourse(course1);
-                        //   studentDao.findByEmail();
+                        Course addedCourse = CourseDao.saveCourse(course1);
+
                     }
                     break;
                     //Remove course
@@ -214,14 +180,14 @@ public class App
                         Scanner sc15 = new Scanner(System.in);
                         String idValue1 = sc15.nextLine();
 
-                        List<Course> reciveCourseList =   CourseDao.findAll();
+                        List<Course> reciveCourseList = CourseDao.findAll();
 
-                        for(Course c:reciveCourseList) {
+                        for (Course c : reciveCourseList) {
 
-                            if(c.getCourseName().equals(idValue1))
+                            if (c.getCourseName().equals(idValue1))
                                 hogia = CourseDao.removeCourse(c);
 
-                            if(hogia)
+                            if (hogia)
                                 System.out.println("The course is successfully deleted from the course list");
                         }
                     }
@@ -229,7 +195,7 @@ public class App
                     //Find all courses Mazmoon
                     case 'm': {
                         List<Course> recievedCourseList = CourseDao.findAll();
-                        for(Course c: recievedCourseList)
+                        for (Course c : recievedCourseList)
                             System.out.println(c);
 
                     }
@@ -239,7 +205,7 @@ public class App
                         Scanner sc24 = new Scanner(System.in);
                         System.out.println("Enter the Course start date to search in the list");
                         String dateInput = sc24.nextLine();
-                        LocalDate courseDate =dateInput(dateInput);
+                        LocalDate courseDate = dateInput(dateInput);
                         CourseDao.findByDate(courseDate);
 
                     }
@@ -262,37 +228,43 @@ public class App
                         System.out.println("Enter the name of the course to search in the list");
                         String courseName = sc24.nextLine();
                         CourseDao.findByName(courseName);
-                                           }
+                    }
                     break;
                     //Register Course
                     case 'r':
-                        //List<Course> recievedCourseList = courseDao.findAll();
+
+
+
                         Scanner sc31 = new Scanner(System.in);
-                        System.out.println("Enter the student Id for registering the course");
-                        int studentIdReg= sc31.nextInt();
 
-
-                        System.out.println("Enter student name");
+                        System.out.println("Enter student name for registering the course");
                         String studentNameReg = sc31.nextLine();
-                        //     Course course1 = new Course(courseName, startDate,courseDuration, students);
 
-                        //   Course  addedCourse = courseDao.saveCourse(course1);
+                        System.out.println("Enter the course name");
+                        String courseNameReg = sc31.nextLine();
 
-                        //reciveStudentList;
-                        // Course c1 = new Course()
+                        List<Student> studentList = StudentDao.findAll();
+
+                        for (Student everyStudent : studentList)
+                            if (everyStudent.getName().equalsIgnoreCase(studentNameReg))
+                                CourseDao.register(everyStudent);
 
                         break;
                     //Un-register Course
                     case 'u':
+                        Scanner sc312 = new Scanner(System.in);
 
-                        Scanner sc32 = new Scanner(System.in);
-                        System.out.println("Enter the student Id to un-register the course");
-                        int studentIdUnreg= sc32.nextInt();
+                        System.out.println("Enter student name for Un-registering the course");
+                        String studentNameUnReg = sc312.nextLine();
 
+                        System.out.println("Enter the course name");
+                        String courseNameUnReg = sc312.nextLine();
 
-                        System.out.println("Enter student name");
-                        String studentNameUnreg = sc32.nextLine();
+                        List<Student> studentListUnReg = StudentDao.findAll();
 
+                        for (Student everyStudentUn : studentListUnReg)
+                            if (everyStudentUn.getName().equalsIgnoreCase(studentNameUnReg))
+                                CourseDao.unregister(everyStudentUn);
                         break;
                 }
             }// if condition

@@ -1,8 +1,5 @@
 package org.example.data_access;
 
-//import org.example.data_access.CourseDaoList;
-//import org.example.data_access.StudentDaoList;
-
 import org.example.model.CourseDaoList;
 import org.example.model.StudentDaoList;
 
@@ -25,6 +22,10 @@ public class Course {
         this.startDate = startDate;
         this.weekDuration = weekDuration;
         this.students = students;
+    }
+
+    public Course(String courseName, LocalDate startDate, int weekDuration) {
+        this(courseName,startDate,weekDuration, new ArrayList<Student>());
     }
 
     public int getCourseId() {
@@ -93,15 +94,14 @@ public class Course {
                 '}';
     }
 
-    StudentDaoList studentDao = new StudentDaoList();
-    CourseDaoList courseDao = new CourseDaoList();
-    List<Student> courseRegisteredList = new ArrayList<>();
-    List<Course> rseRegister = new ArrayList<>();
+
     public void register(Student student) {
 
         System.out.println("Registration is in process...........DONE");
 
-        courseRegisteredList.add(student);
+//        courseRegisteredList.add(student);
+
+        students.add(student);
 
     }
 
@@ -109,8 +109,11 @@ public class Course {
 
         System.out.println("De-registration is in process.......DONE");
 
-        courseRegisteredList.remove(student);
+        students.remove(student);
+
+        //courseRegisteredList.remove(student);
 
     }
+
 }
 
