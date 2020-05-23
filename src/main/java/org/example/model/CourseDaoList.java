@@ -24,11 +24,12 @@ public class CourseDaoList implements CourseDao {
 
     @Override
     public Course findById(int id) {
-        /*for(Student s:students) {
-            if(s.getStudentId()==id)
-                System.out.println("Yes, the student is in the student list");
+        for(Course c:courses) {
+            if(c.getCourseId()==id)
+                System.out.println("Yes, the course is in the courses list");
+        return c;
         }
-        return students;*/
+
         return null;
     }
 
@@ -43,7 +44,14 @@ public class CourseDaoList implements CourseDao {
 
     @Override
     public List<Course> findByDate(LocalDate date) {
-        return null;
+        for(Course c:courses) {
+            if(c.getStartDate().equals(date))
+                System.out.println("Yes, the Course with the desired start Date is in the course list");
+            else
+                System.out.println("There is no such date as "+ date+" you are asking for");
+        }
+
+        return courses;
     }
 
     @Override

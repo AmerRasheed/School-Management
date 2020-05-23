@@ -138,7 +138,7 @@ public class App
                         Scanner sc24 = new Scanner(System.in);
                         System.out.println("Enter the student Id to search in the list");
                         int studentId = sc24.nextInt();
-                         StudentDao.findById(studentId);
+                       StudentDao.findById(studentId);
                         //System.out.println("The Id belongs to "+ student);
 
                     }
@@ -236,9 +236,11 @@ public class App
                     break;
                     //Finding Course by Date
                     case 'b': {
-                        List<Course> recievedCourseList = CourseDao.findAll();
-                        for(Course c: recievedCourseList)
-                            System.out.println(c);
+                        Scanner sc24 = new Scanner(System.in);
+                        System.out.println("Enter the Course start date to search in the list");
+                        String dateInput = sc24.nextLine();
+                        LocalDate courseDate =dateInput(dateInput);
+                        CourseDao.findByDate(courseDate);
 
                     }
                     break;
@@ -247,7 +249,7 @@ public class App
                         Scanner sc24 = new Scanner(System.in);
                         System.out.println("Enter the Course Id to search in the list");
                         int courseId = sc24.nextInt();
-                        //Student student=StudentDao.findById(studentId);
+                        CourseDao.findById(courseId);
                         // CourseDao.findAll(courseId);
 
                         //System.out.println("The Course Id belongs to "+ course);
